@@ -14,6 +14,14 @@ Signup.init({
   password: {
     type: DataTypes.STRING(255),
     allowNull: false,
+  },
+  Ispremium:{
+    type:DataTypes.BOOLEAN,
+    defaultValue:false,
+  },
+  totalExpense:{
+    type:DataTypes.INTEGER,
+    defaultValue:0,
   }
   
 }, {
@@ -21,4 +29,12 @@ Signup.init({
   modelName:'Signup',
   timestamps: true, 
 })
+
+sequelize.sync()  
+  .then(() => {
+    console.log('Database synchronized');
+  })
+  .catch((err) => {
+    console.error('Error synchronizing the database:', err);
+  });
 module.exports = Signup;

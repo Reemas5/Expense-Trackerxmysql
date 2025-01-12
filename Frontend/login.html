@@ -4,7 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="login.css" />
   </head>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
   <body>
     <div class="form-container">
       <h2>Login</h2>
@@ -31,8 +37,29 @@
         </div>
         <button type="submit">Login</button>
       </form>
+      <div class="signup-link">
+        <p>Not signed in? <a href="/Frontend/signup.html">sign up</a></p>
+      </div>
+      <div class="forgot-password">
+        <a href="#" id="forgot_password">Forgot Password?</a>
+      </div>
+      <form
+        id="forgot-password-form"
+        class="hidden"
+        onsubmit="forgotformsubmit(event)"
+      >
+        <input
+          type="email"
+          id="emailInput"
+          name="useremail"
+          placeholder="Enter your email"
+          required
+        />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
   <script src="login.js"></script>
 </html>
