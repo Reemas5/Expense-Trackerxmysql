@@ -354,68 +354,68 @@ const aws_access_key_secret = process.env.AWS_ACCESS_KEY_SECRET;
 // }
 
 // })
-router.get('/download',authenticate, async (req, res) => {
-    try {
-      const expenses = await req.result.getExpenses();
+// router.get('/download',authenticate, async (req, res) => {
+//     try {
+//       const expenses = await req.result.getExpenses();
       
       
-      const stringifiedExpense = JSON.stringify(expenses);
-      const userId = req.result.id;
-      const fileName = `Expense${userId}/${new Date().toISOString()}.txt`;
+//       const stringifiedExpense = JSON.stringify(expenses);
+//       const userId = req.result.id;
+//       const fileName = `Expense${userId}/${new Date().toISOString()}.txt`;
   
-      const uploadToS3 = (data, filename) => {
-        const s3bucket = new AWS.S3({
-          accessKeyId: aws_access_key,
-          secretAccessKey: aws_access_key_secret,
+//       const uploadToS3 = (data, filename) => {
+//         const s3bucket = new AWS.S3({
+//           accessKeyId: aws_access_key,
+//           secretAccessKey: aws_access_key_secret,
          
-        });
+//         });
   
-        const params = {
-          Bucket: bucket_name,
-          Key: filename,
-          Body: data,
-          ACL: 'public-read',
-        };
+//         const params = {
+//           Bucket: bucket_name,
+//           Key: filename,
+//           Body: data,
+//           ACL: 'public-read',
+//         };
   
-        return new Promise((resolve, reject) => {
-          s3bucket.upload(params, (err, res) => {
-            if (err) {
-              reject(err);
-            } else {
-              resolve(res.Location);
-            }
-          });
-        });
-      };
+//         return new Promise((resolve, reject) => {
+//           s3bucket.upload(params, (err, res) => {
+//             if (err) {
+//               reject(err);
+//             } else {
+//               resolve(res.Location);
+//             }
+//           });
+//         });
+//       };
   
-      const fileURL = await uploadToS3(stringifiedExpense, fileName);
+//       const fileURL = await uploadToS3(stringifiedExpense, fileName);
   
-      // Function to create a record in the DownloadList table
-      const createDownloadRecord = async (fileName, fileURL, userId) => {
-        return await DownloadList.create({ fileName, fileURL, SignupId:userId });
-      };
+//       // Function to create a record in the DownloadList table
+//       const createDownloadRecord = async (fileName, fileURL, userId) => {
+//         return await DownloadList.create({ fileName, fileURL, SignupId:userId });
+//       };
   
-      // Create a record in the DownloadList table
-      await createDownloadRecord(fileName, fileURL,userId);
+//       // Create a record in the DownloadList table
+//       await createDownloadRecord(fileName, fileURL,userId);
   
-      res.status(200).json({ fileURL, success: true });
-    } catch (err) {
-      console.error('Error in /expense/download:', err);
-      res.status(500).json({
-        success: false,
-        message: 'An error occurred while processing the request.',
-      });
-    }
-  });
-router.get('/downloads',authenticate,async(req,res)=>{
-    try{
-        const result = await DownloadList.findAll({where:{SignupId:req.result.id}})
-        res.status(201).json(result)
-        console.log(result)
-    } 
-    catch(error){
-        res.status(500).json({message:error.message})
-    }
-  })
+//       res.status(200).json({ fileURL, success: true });
+//     } catch (err) {
+//       console.error('Error in /expense/download:', err);
+//       res.status(500).json({
+//         success: false,
+//         message: 'An error occurred while processing the request.',
+//       });
+//     }
+//   });
+// router.get('/downloads',authenticate,async(req,res)=>{
+//     try{
+//         const result = await DownloadList.findAll({where:{SignupId:req.result.id}})
+//         res.status(201).json(result)
+//         console.log(result)
+//     } 
+//     catch(error){
+//         res.status(500).json({message:error.message})
+//     }
+//   })
 
-module.exports = router
+// module.exports = router
