@@ -14,13 +14,15 @@ const expenseroute = require('./routes/expenseroute')
 const {DownloadList} = require('./model/filedownload')
 const premiumroutes = require('./routes/premiumcontentroute')
 const forgotpassword = require('./routes/forgotpasswordroute')
-
+const helmet = require('helmet')
 
 const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })); 
 
 app.use(cors())
+app.use(helmet())
+
 
 //app.use('/',router)
 app.use('/',userroutes)
