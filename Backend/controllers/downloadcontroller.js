@@ -61,7 +61,7 @@ exports.downloads = async(req,res)=>{
     try{
         const result = await DownloadList.findAll({where:{SignupId:req.result.id}})
         res.status(201).json(result)
-        console.log(result)
+       
     } 
     catch(error){
         res.status(500).json({message:error.message})

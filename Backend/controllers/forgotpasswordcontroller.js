@@ -44,13 +44,13 @@ exports.forgotpassword = async(req,res)=>{
                 htmlContent: `<a href="http://localhost:3500/resetpassword/${id}">Reset Password</a>`,
             });
 
-            console.log('Email sent successfully:', response);
+           // console.log('Email sent successfully:', response);
             return res.status(200).json({ message: 'Link to reset password sent to your mail', success: true });
         } else {
             throw new Error('User does not exist');
         }
     } catch (err) {
-        console.error(err);
+       // console.error(err);
         return res.json({ message: err.message, success: false });
     }
 }
@@ -83,7 +83,7 @@ try {
         res.status(404).send({ message: 'Request not found' });
     }
 } catch (error) {
-    console.error(error);
+   // console.error(error);
     res.status(500).send({ message: 'Something went wrong' });
 }
 }
@@ -111,14 +111,14 @@ exports.updatepassword = async(req,res)=>{
         const salt = await bcrypt.genSalt(saltRounds);
         const hash = await bcrypt.hash(newpassword, salt);
 
-        console.log('New password:', newpassword);
-        console.log('Generated hash:', hash);
+       // console.log('New password:', newpassword);
+       // console.log('Generated hash:', hash);
 
         await user.update({ password: hash });
         res.status(201).json({ message: 'Successfully updated the new password', success: true });
 
     } catch (error) {
-        console.error(error);
+      //  console.error(error);
         return res.status(403).json({ error: error.message, success: false });
     }
 }

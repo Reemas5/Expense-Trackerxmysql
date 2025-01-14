@@ -35,7 +35,7 @@ exports.buying_premium =async(req,res)=>{
             key_id:rzp.key_id
     });
     } catch (error) {
-        console.error('Error creating order:', error.message);
+        //console.error('Error creating order:', error.message);
         return res.status(403).json({
             message: 'Something went wrong',
             error: error.message,
@@ -45,7 +45,7 @@ exports.buying_premium =async(req,res)=>{
 
 exports.updatedtransactionstatus = async(req,res)=>{
     const { order_id, paymentId } = req.body;
-    console.log(paymentId)
+    //console.log(paymentId)
 
     try {
         
@@ -87,7 +87,7 @@ exports.updatedtransactionstatus = async(req,res)=>{
             });
         }
     } catch (error) {
-        console.error('Error updating transaction status:', error);
+      //  console.error('Error updating transaction status:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
 }

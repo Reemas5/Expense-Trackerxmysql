@@ -2,7 +2,7 @@ const dotenv = require("dotenv")
 dotenv.config()
 const express = require("express");
 const cors = require('cors')
-const router = require('./routes/routers')
+
 const {authenticate} = require('./middleware/auth')
 const sequelize = require('./config/db')
 const Signup = require('./model/signup')
@@ -24,7 +24,7 @@ app.use(cors())
 app.use(helmet())
 
 
-//app.use('/',router)
+
 app.use('/',userroutes)
 app.use('/',expenseroute)
 app.use('/',premiumroutes)
