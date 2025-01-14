@@ -13,7 +13,7 @@ const handleformsubmit = async(event)=>{
         password,
     }
   try{
-     const response = await axios.post("http://localhost:3500/login",user_details)
+     const response = await axios.post("http://54.144.231.227:3600/login",user_details)
      if (response.status === 201) {
         console.log(response.data)
 
@@ -39,7 +39,7 @@ const forgotformsubmit= async(event)=>{
     event.preventDefault()
     const email = event.target.useremail.value
     try{
-        const result =await axios.post('http://localhost:3500/forgot_password',{email})
+        const result =await axios.post('http://54.144.231.227:3600/forgot_password',{email})
         console.log(result)
         forgot_password_form.classList.add('hidden')
     }

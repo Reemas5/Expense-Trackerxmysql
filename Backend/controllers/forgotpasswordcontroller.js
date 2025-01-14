@@ -41,7 +41,7 @@ exports.forgotpassword = async(req,res)=>{
                 sender,
                 to: receivers,
                 subject: 'Reset Your Password',
-                htmlContent: `<a href="http://localhost:3500/resetpassword/${id}">Reset Password</a>`,
+                htmlContent: `<a href="http://54.144.231.227:3600/resetpassword/${id}">Reset Password</a>`,
             });
 
            // console.log('Email sent successfully:', response);
@@ -72,7 +72,7 @@ try {
                         console.log('called');
                     }
                 </script>
-                <form action='http://localhost:3500/updatepassword/${id}' method="post">
+                <form action='http://54.144.231.227:3600/updatepassword/${id}' method="post">
                     <label for="newpassword">Enter New password</label>
                     <input name="newpassword" type="password" required></input>
                     <button>reset password</button>
