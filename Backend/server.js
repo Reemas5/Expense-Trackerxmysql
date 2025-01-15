@@ -34,12 +34,12 @@ app.use('/',expenseroute)
 app.use('/',premiumroutes)
 app.use('/',forgotpassword)
 
-app.use(express.static(path.join(__dirname, 'Backend', 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/:filename', (req, res) => {
     const { filename } = req.params;
-    const filePath = path.join(__dirname, 'Backend', 'public', `${filename}.html`);
+    const filePath = path.join(__dirname,  'public', `${filename}.html`);
 
     res.sendFile(filePath, (err) => {
         if (err) {
