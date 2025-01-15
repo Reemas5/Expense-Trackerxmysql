@@ -21,15 +21,15 @@ const handleformsubmit = async(event)=>{
 
          localStorage.setItem('token', response.data.token);
         localStorage.setItem('Ispremium',response.data.premium_user)
-        const token = localStorage.getItem('token')
-        const response_2 = await axios.get("http://54.144.231.227:3600/expense_auth",{
-            headers:{
-                'Authorization':token,
-            }
-        });
-        if (response_2.status === 200){
-            window.location.href = "http://54.144.231.227:3600/expense"
-        }
+        
+        // const response_2 = await axios.get("http://54.144.231.227:3600/expense_auth",{
+        //     headers:{
+        //         'Authorization':token,
+        //     }
+        // });
+    
+        window.location.href = "http://54.144.231.227:3600/expense"
+        
       
     } else {
         alert('Login failed');
