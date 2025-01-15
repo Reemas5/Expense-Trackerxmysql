@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day to Day Expenses</title>
+    <link rel="stylesheet" href="/css/report.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <link rel="stylesheet" href="report.css" />
+  <body>
+    <div class="container">
+      <h1>Day to Day Expenses</h1>
+      <h2>2025</h2>
+
+      <!-- Existing Sections -->
+      <section class="monthly-report">
+        <h3>March 2025</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Category</th>
+              <th>Income</th>
+              <th>Expenses</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>01-03-2025</td>
+              <td>Milk</td>
+              <td>Groceries</td>
+              <td>--</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>03-03-2025</td>
+              <td>Salary</td>
+              <td>Income</td>
+              <td>45,000</td>
+              <td>--</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="yearly-report">
+        <h3>Yearly Report - 2025</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Income</th>
+              <th>Expenses</th>
+              <th>Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>March</td>
+              <td>45,000</td>
+              <td>20,000</td>
+              <td>25,000</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="notes-report">
+        <h3>Notes Report - 2025</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>11-02-2025</td>
+              <td>EMI</td>
+            </tr>
+            <tr>
+              <td>25-02-2025</td>
+              <td>Rent</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- New Section for Downloaded Files -->
+      <section class="downloads-report">
+        <h3>Downloaded Files</h3>
+        <table id="downloads-table">
+          <thead>
+            <tr>
+              <th>File Name</th>
+              <th>Download Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Dynamically populated rows will go here -->
+          </tbody>
+        </table>
+      </section>
+    </div>
+
+    <!-- Download Button -->
+    <a href="#" class="download-button" id="download" title="Download"
+      >&#x2B07;</a
+    >
+  </body>
+  <script src="report.js"></script>
+</html>

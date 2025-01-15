@@ -2,7 +2,8 @@ const dotenv = require("dotenv")
 dotenv.config()
 const express = require("express");
 const cors = require('cors')
-
+const path = require('path')
+const fs = require('fs')
 const {authenticate} = require('./middleware/auth')
 const sequelize = require('./config/db')
 const Signup = require('./model/signup')
@@ -20,7 +21,10 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })); 
 
+
 app.use(cors())
+
+
 app.use(helmet())
 
 
@@ -29,6 +33,9 @@ app.use('/',userroutes)
 app.use('/',expenseroute)
 app.use('/',premiumroutes)
 app.use('/',forgotpassword)
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 Signup.hasMany(Expense);
 Expense.belongsTo(Signup);
