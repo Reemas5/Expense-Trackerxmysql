@@ -16,6 +16,9 @@ const {DownloadList} = require('./model/filedownload')
 const premiumroutes = require('./routes/premiumcontentroute')
 const forgotpassword = require('./routes/forgotpasswordroute')
 const helmet = require('helmet')
+const bcrypt = require('bcrypt'); 
+const Expenses = require("./model/expense");
+const { signup } = require("./controllers/usercontroller");
 
 const app = express();
 app.use(express.json())
@@ -25,7 +28,36 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 
-app.use(helmet())
+app.use(helmet({ntSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: [
+        "'self'",
+        "'unsafe-inline'",
+        "'unsafe-eval'",
+        'https://checkout.razorpay.com',
+        'https://cdn.jsdelivr.net',
+      ],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", 'data:', 'https:', 'http:'],
+      formAction: ["'self'", 'http://13.203.1.119:3000'],
+      connectSrc: [
+        "'self'",
+        'https://api.razorpay.com',
+        'https://lumberjack.razorpay.com',
+        'https://lumberjack-cx.razorpay.com',
+      ],
+      fontSrc: ["'self'", 'https:', 'data:'],
+      objectSrc: ["'none'"],
+      mediaSrc: ["'self'"],
+      frameSrc: ["'self'", 'https://api.razorpay.com'],
+    },
+  },
+  crossOriginEmbedderPolicy: false,
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+  hsts: false, // Disable HSTS here
+  contentSecurityPolicy: false, // if you want to disable CSP entirely
+}))
 
 
 
@@ -35,12 +67,8 @@ app.use('/',premiumroutes)
 app.use('/',forgotpassword)
 
 
-app.get('/',async(req,res)=>{
-    console.log("server is running");
-    
-})
 
-//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use((req,res)=>{
     res.sendFile(path.join(__dirname,`public/${req.url}`))
 })
