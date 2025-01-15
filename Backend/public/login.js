@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+
 
 const forgot_password = document.getElementById('forgot_password')
 const forgot_password_form = document.getElementById('forgot-password-form')
