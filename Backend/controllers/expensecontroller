@@ -2,6 +2,15 @@ const sequelize = require('../config/db');
 const Expenses = require('../model/expense');
 const Signup = require('../model/signup');
 
+exports.checking_auth = async(req,res)=>{
+    try{
+      res.status(200).json({message:"token matched"},{success:true})
+    }
+    catch{
+      res.status(401).json({message:"token not matched"},{sucess:false})
+    }
+}
+
 exports.addExpense = async (req, res) => {
     const { expenseAmount, description, category } = req.body;
     const unique_id = req.result.id;
