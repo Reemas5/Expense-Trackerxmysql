@@ -18,14 +18,14 @@ const handleformsubmit = async (event) => {
 
         // Check if the response status is 200 (success)
         if (response.status === 201) {
-            // Redirect to login page if signup is successful
             
-            window.location.href = "login.html";
+            
+            window.location.href = "http://54.144.231.227:3600/login";
         } else {
             alert('Sign up failed');
         }
     } catch (error) {
-        // Handle error if the request fails
+        
         console.log(error.message);
     }
 };
