@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/:filename', (req, res) => {
     const { filename } = req.params;
-    const filePath = path.join(__dirname,  'public', `${filename}.html`);
+    const filePath = path.join(__dirname,  'public', `${filename}`);
 
     res.sendFile(filePath, (err) => {
         if (err) {
