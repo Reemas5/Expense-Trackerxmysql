@@ -69,9 +69,17 @@ app.use('/',forgotpassword)
 
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use((req,res)=>{
-    res.sendFile(path.join(__dirname,`public/${req.url}`))
-})
+app.get('/:filename', (req, res) => {
+    const { filename } = req.params;
+    const filePath = path.join(__dirname, 'backend', 'public', `${filename}.html`);
+
+    res.sendFile(filePath, (err) => {
+        if (err) {
+            res.status(404).send('File not found');
+        }
+    });
+});
+
 
 
 
