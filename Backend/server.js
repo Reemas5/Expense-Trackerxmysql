@@ -95,9 +95,7 @@ DownloadList.belongsTo(Signup)
 // })
 
 
-const bcrypt = require('bcrypt'); // Ensure bcrypt is imported
-const Expenses = require("./model/expense");
-const { signup } = require("./controllers/usercontroller");
+
 
     
 sequelize.sync()
