@@ -34,19 +34,18 @@ app.use('/',expenseroute)
 app.use('/',premiumroutes)
 app.use('/',forgotpassword)
 
-app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/',async(req,res)=>{
+    console.log("server is running");
+    
+})
+
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname,`public/${req.url}`))
+})
 
 
-app.get('/:filename', (req, res) => {
-    const { filename } = req.params;
-    const filePath = path.join(__dirname,  'public', `${filename}`);
-
-    res.sendFile(filePath, (err) => {
-        if (err) {
-            res.status(404).send('File not found');
-        }
-    });
-});
 
 
 Signup.hasMany(Expense);
@@ -62,10 +61,10 @@ Signup.hasMany(DownloadList);
 DownloadList.belongsTo(Signup)
 
 
-app.get('/',async(req,res)=>{
-    console.log("server is running");
+// app.get('/',async(req,res)=>{
+//     console.log("server is running");
     
-})
+// })
 
 
 const bcrypt = require('bcrypt'); // Ensure bcrypt is imported
