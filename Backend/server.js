@@ -40,7 +40,7 @@ app.use(helmet({ntSecurityPolicy: {
       ],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", 'data:', 'https:', 'http:'],
-      formAction: ["'self'", 'http://13.203.1.119:3000'],
+      formAction: ["'self'", 'http://54.144.231.227:3600'],
       connectSrc: [
         "'self'",
         'https://api.razorpay.com',
@@ -71,7 +71,7 @@ app.use('/',forgotpassword)
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/:filename', (req, res) => {
     const { filename } = req.params;
-    const filePath = path.join(__dirname, 'backend', 'public', `${filename}.html`);
+    const filePath = path.join(__dirname, 'public', `${filename}.html`);
 
     res.sendFile(filePath, (err) => {
         if (err) {
