@@ -205,7 +205,7 @@ function fetchexpenses(page = 1) {
     //const itemsPerPage = document.getElementById('itemsPerPage').value;
     console.log(itemsPerPage)
     axios
-      .get(`http://54.144.231.227:3600/expense?page=${page}&items=${itemsPerPage}`, {
+      .get(`http://54.144.231.227:3600/getexpense?page=${page}&items=${itemsPerPage}`, {
         headers: { 'Authorization': token },
       })
       .then((response) => {
@@ -283,7 +283,7 @@ const displayitem = (item) => {
       const token = localStorage.getItem('token')
       const _id = li.expensedata.id;
   
-      await axios.delete(`http://54.144.231.227:3600/expense/${_id}`,{
+      await axios.delete(`http://54.144.231.227:3600/delexpense/${_id}`,{
         headers:{
             "Authorization":token
         }
@@ -312,7 +312,7 @@ const handleformsubmit =async(event)=>{
                 category,
             }
             try {
-                const response = await axios.post('http://54.144.231.227:3600/expense',expenses,
+                const response = await axios.post('http://54.144.231.227:3600/postexpense',expenses,
                     {
                         headers: {
                             "Authorization": token, 
