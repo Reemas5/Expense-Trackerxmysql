@@ -70,7 +70,7 @@ function checking_forpremium(){
     
     show_leaderboard.addEventListener('click',async()=>{
       try{
-        const resp = await axios.get('http://54.144.231.227:3600/premium_content',{
+        const resp = await axios.get('http://3.88.47.203:3600/premium_content',{
             headers:{
                 'Authorization':token
             }
@@ -117,7 +117,7 @@ function checking_forpremium(){
     console.log(token);
 
     try {
-        const result = await axios.get("http://54.144.231.227:3600/premium", {
+        const result = await axios.get("http://3.88.47.203:3600/premium", {
             headers: {
                 "Authorization": token,
             },
@@ -136,7 +136,7 @@ function checking_forpremium(){
                     try {
                       
                         const updateResponse = await axios.post(
-                            "http://54.144.231.227:3600/updatetransactionstatus", {
+                            "http://3.88.47.203:3600/updatetransactionstatus", {
                                 order_id: options.order_id,
                                 paymentId: response.razorpay_payment_id,
                             }, {
@@ -205,7 +205,7 @@ function fetchexpenses(page = 1) {
     //const itemsPerPage = document.getElementById('itemsPerPage').value;
     console.log(itemsPerPage)
     axios
-      .get(`http://54.144.231.227:3600/getexpense?page=${page}&items=${itemsPerPage}`, {
+      .get(`http://3.88.47.203:3600/getexpense?page=${page}&items=${itemsPerPage}`, {
         headers: { 'Authorization': token },
       })
       .then((response) => {
@@ -283,7 +283,7 @@ const displayitem = (item) => {
       const token = localStorage.getItem('token')
       const _id = li.expensedata.id;
   
-      await axios.delete(`http://54.144.231.227:3600/delexpense/${_id}`,{
+      await axios.delete(`http://3.88.47.203:3600/delexpense/${_id}`,{
         headers:{
             "Authorization":token
         }
@@ -312,7 +312,7 @@ const handleformsubmit =async(event)=>{
                 category,
             }
             try {
-                const response = await axios.post('http://54.144.231.227:3600/postexpense',expenses,
+                const response = await axios.post('http://3.88.47.203:3600/postexpense',expenses,
                     {
                         headers: {
                             "Authorization": token, 
@@ -324,5 +324,5 @@ const handleformsubmit =async(event)=>{
             } catch (error) {
                 console.log(error.message);
             }
-
+       document.getElementById('expense-form').reset()
 }

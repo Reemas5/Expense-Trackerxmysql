@@ -2,7 +2,7 @@ const sequelize = require('../config/db');
 const Expenses = require('../model/expense');
 const Signup = require('../model/signup');
 const {DownloadList}= require('../model/filedownload')
-
+const AWS = require("aws-sdk")
 exports.download = async(req,res)=>{
     try {
         const expenses = await req.result.getExpenses();
