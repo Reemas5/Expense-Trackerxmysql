@@ -14,13 +14,13 @@ const handleformsubmit = async (event) => {
 
     try {
         // Sending POST request to the backend for signup
-        const response = await axios.post("http://3.88.47.203:3600/signup", user_details);
+        const response = await axios.post("http://3.88.47.203/signup", user_details);
 
         // Check if the response status is 200 (success)
         if (response.status === 201) {
             
             
-            window.location.href = "http://3.88.47.203:3600/login";
+            window.location.href = "http://3.88.47.203/login";
         } else {
             alert('Sign up failed');
         }
