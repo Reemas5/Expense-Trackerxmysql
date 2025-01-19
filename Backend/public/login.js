@@ -15,7 +15,7 @@ const handleformsubmit = async(event)=>{
         password,
     }
   try{
-     const response = await axios.post("http://3.88.159.72/login",user_details)
+     const response = await axios.post("http://3.88.159.72:3600/login",user_details)
      if (response.status === 201) {
         console.log(response.data)
 
@@ -28,7 +28,7 @@ const handleformsubmit = async(event)=>{
         //     }
         // });
     
-        window.location.href = "http://3.88.159.72/expense"
+        window.location.href = "http://3.88.159.72:3600/expense"
         
       
     // } else if (response.status===404){
@@ -62,7 +62,7 @@ const forgotformsubmit= async(event)=>{
     event.preventDefault()
     const email = event.target.useremail.value
     try{
-        const result =await axios.post('http://3.88.159.72/forgot_password',{email})
+        const result =await axios.post('http://3.88.159.72:3600/forgot_password',{email})
         console.log(result)
         forgot_password_form.classList.add('hidden')
     }
