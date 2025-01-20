@@ -14,13 +14,13 @@ exports.download = async(req,res)=>{
     
         const uploadToS3 = (data, filename) => {
           const s3bucket = new AWS.S3({
-            accessKeyId: aws_access_key,
-            secretAccessKey: aws_access_key_secret,
+            accessKeyId: process.env.AWS_ACCESS_KEY,
+            secretAccessKey: process.env.AWS_ACCESS_KEY_SECRET,
            
           });
     
           const params = {
-            Bucket: bucket_name,
+            Bucket: process.env.BUCKET_NAME,
             Key: filename,
             Body: data,
             ACL: 'public-read',
