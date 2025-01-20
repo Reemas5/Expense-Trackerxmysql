@@ -56,14 +56,14 @@ exports.updatedtransactionstatus = async(req,res)=>{
         }
     
         
-        const paymentDetails = await axios.get(`https://api.razorpay.com/v1/payments/${paymentId}`, {
-            auth: {
-                username: process.env.KEY_ID,
-                password: process.env.KEY_SECRET,
-            },
-        });
-    
-        if (paymentDetails.data.status === 'captured') {
+        // const paymentDetails = await axios.get(`https://api.razorpay.com/v1/payments/${paymentId}`, {
+        //     auth: {
+        //         username: process.env.KEY_ID,
+        //         password: process.env.KEY_SECRET,
+        //     },
+        // });
+        // if (paymentDetails.data.status === 'captured') 
+        if (order){
            
             await Promise.all([
                 order.update({
@@ -98,7 +98,7 @@ exports.providing_premium_content = async(req,res)=>{
           order:[['totalExpense','DESC']]
     
         })
-        
+
         res.status(200).json(results);
     
     } catch (error) {
