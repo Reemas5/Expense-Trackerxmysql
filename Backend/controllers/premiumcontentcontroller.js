@@ -58,8 +58,8 @@ exports.updatedtransactionstatus = async(req,res)=>{
         
         const paymentDetails = await axios.get(`https://api.razorpay.com/v1/payments/${paymentId}`, {
             auth: {
-                username: process.env.key_id,
-                password: process.env.key_secret,
+                username: process.env.KEY_ID,
+                password: process.env.KEY_SECRET,
             },
         });
     
