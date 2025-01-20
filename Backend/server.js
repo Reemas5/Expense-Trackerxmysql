@@ -28,7 +28,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 
-app.use(helmet({ntSecurityPolicy: {
+app.use(helmet({contentSecurityPolicy: {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: [
@@ -40,7 +40,7 @@ app.use(helmet({ntSecurityPolicy: {
       ],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'", 'data:', 'https:', 'http:'],
-      formAction: ["'self'", 'http://54.144.231.227:3600'],
+      formAction: ["'self'", 'http://3.88.159.72:3600'],
       connectSrc: [
         "'self'",
         'https://api.razorpay.com',
@@ -55,8 +55,8 @@ app.use(helmet({ntSecurityPolicy: {
   },
   crossOriginEmbedderPolicy: false,
   crossOriginResourcePolicy: { policy: 'cross-origin' },
-  hsts: false, // Disable HSTS here
-  contentSecurityPolicy: false, // if you want to disable CSP entirely
+  hsts: false, 
+  contentSecurityPolicy: false, 
 }))
 
 

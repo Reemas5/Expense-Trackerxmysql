@@ -97,8 +97,8 @@ exports.providing_premium_content = async(req,res)=>{
         const results = await Signup.findAll({
           order:[['totalExpense','DESC']]
     
-        });
-    
+        })
+        
         res.status(200).json(results);
     
     } catch (error) {
