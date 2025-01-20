@@ -87,7 +87,7 @@ exports.updatedtransactionstatus = async(req,res)=>{
             });
         }
     } catch (error) {
-      //  console.error('Error updating transaction status:', error);
+       console.log('Error updating transaction status:', error.message);
         res.status(500).json({ error: 'Internal server error' });
     }
 }
