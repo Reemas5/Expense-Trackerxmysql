@@ -15,6 +15,7 @@ const expenseroute = require('./routes/expenseroute')
 const {DownloadList} = require('./model/filedownload')
 const premiumroutes = require('./routes/premiumcontentroute')
 const forgotpassword = require('./routes/forgotpasswordroute')
+const downloadfiles = require('./routes/downloadroute')
 const helmet = require('helmet')
 const bcrypt = require('bcrypt'); 
 const Expenses = require("./model/expense");
@@ -65,6 +66,7 @@ app.use('/',userroutes)
 app.use('/',expenseroute)
 app.use('/',premiumroutes)
 app.use('/',forgotpassword)
+app.use('/',downloadfiles)
 
 
 
